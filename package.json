@@ -1,0 +1,26 @@
+{
+  "name": "sr_web_app",
+  "version": "1.0.0",
+  "description": "Web Application to CRUD Service Requests",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "sequelize": "^6.6.2",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaushikprasanth/sr_web_app.git"
+  },
+  "author": "Kaushik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kaushikprasanth/sr_web_app/issues"
+  },
+  "homepage": "https://github.com/kaushikprasanth/sr_web_app#readme"
+}
