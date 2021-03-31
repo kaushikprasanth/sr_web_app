@@ -4,6 +4,14 @@ const db = require('../config/db')
 const ServiceRequest = require('../models/ServiceRequest')
 
 
+router.use(function (req, res, next) {
+    
+    if(req.cookies.name != undefined)
+        next()
+    else
+        res.sendStatus(403)
+})
+
 router.get('/',(req,res)=>{
 	ServiceRequest.findAll().then(
 		result => {
@@ -62,7 +70,7 @@ router.put('/:id',(req,res)=>{
 
 })
 router.post('/',(req,res)=>{
-    let body = { ...req.body,"lastModifiedBy":req.body.createdBy}
+    let body = { ...req.body,'createdBy':req.cookies.name,"lastModifiedBy":req.cookies.name}
     ServiceRequest.create(body).then((result)=>{
         res.status(201)
         res.send(result)
