@@ -16,10 +16,32 @@ router.get('/',async (req,res)=>{
 })
 
 router.get('/new',(req,res)=>{
-	res.render('new')
+	res.render('new',{mode:'New'})
 })
 
 router.get('/view/:id',(req,res)=>{
-	res.render('new',{mode:'view'})
+	let id = req.params.id
+	let sr ={}
+	axios.get(url+'/api/servicerequest/'+id)
+	.then(response => {
+	  sr = response.data;
+	  res.render('new',{mode:'View',sr})
+	})
+	.catch(error => {
+	  console.log(error);
+	});
+})
+
+router.get('/edit/:id',(req,res)=>{
+	let id = req.params.id
+	let sr ={}
+	axios.get(url+'/api/servicerequest/'+id)
+	.then(response => {
+	  sr = response.data;
+	  res.render('new',{mode:'Edit',sr})
+	})
+	.catch(error => {
+	  console.log(error);
+	});
 })
 module.exports = router
