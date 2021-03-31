@@ -1,10 +1,14 @@
 const express = require('express')
+const cookieParser = require('cookie-parser')
 
 const db = require('./config/db')
 
 const app = express()
+
 app.set('view engine','ejs')
 app.use(express.json())
+app.use(express.urlencoded({ extended: true })); 
+app.use(cookieParser())
 
 
 db.authenticate()
@@ -16,6 +20,8 @@ db.authenticate()
 db.sync({ alter: true })
 
 app.use('/',require('./controller/mainController'))
+
+app.use('/api/user',require('./controller/userController'))
 
 app.use('/api/servicerequest',require('./controller/srController'))
 
