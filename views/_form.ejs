@@ -11,14 +11,13 @@
   </div>
     <div class="col-md-4">
         <label for="building" class="form-label">Building</label>
-        <select id="building" class="form-select">
-          <option selected>Choose...</option>
-          <option>...</option>
+        <select id="building" name="buildingCode"class="form-select">
+          <option key="BOH">BOH</option>
         </select>
       </div>
     <div class="col-12">
-      <label for="description" required class="form-label">Description</label>
-      <textarea   class="form-control" id="description" rows="3"></textarea>
+      <label for="description" class="form-label">Description</label>
+      <textarea class="form-control" name="description" required id="description" rows="3"></textarea>
     </div>
     <%if (mode === 'View') { %>
     <div class="col-md-6">
