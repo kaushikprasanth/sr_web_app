@@ -29,7 +29,7 @@ router.get('/:id',(req,res)=>{
 			if (result.length > 0)
 			{
 				res.status(200)
-				res.send(result)
+				res.send(result[0])
 			}
 			else{
 				res.sendStatus(404)
@@ -46,7 +46,6 @@ router.put('/:id',(req,res)=>{
     let body = { ...req.body}
     ServiceRequest.update( body , { where: { id } })
         .then(result => {
-            console.log(result)
             if(result[0] > 0){
                 res.sendStatus(200)
             }
@@ -68,7 +67,10 @@ router.post('/',(req,res)=>{
         res.status(201)
         res.send(result)
     })
-    .catch(err => res.sendStatus(400))
+    .catch(err => {
+        console.log(err)
+        res.sendStatus(400)
+    })
 
 })
 router.delete('/:id',(req,res)=>{
