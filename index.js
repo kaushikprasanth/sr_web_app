@@ -9,8 +9,9 @@ db.authenticate()
     .then(()=> console.log('Database Connected'))
     .catch(err => console.log(err))
 
-// DB Intialisation - Create Tables
-db.sync()
+// DB Intialisation - Create Tables 
+// alter true modifies the table based on model changes
+db.sync({ alter: true })
 
 app.get('/',(req,res) =>res.send('Hello'))
 

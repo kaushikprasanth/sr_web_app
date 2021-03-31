@@ -4,8 +4,8 @@ const db = require('../config/db');
 const ServiceRequest = db.define('ServiceRequest', {
 	id:{
 		type: DataTypes.UUID,
-	  defaultValue: Sequelize.UUIDV4,
-	  primaryKey: true
+	    defaultValue: Sequelize.UUIDV4,
+	    primaryKey: true
 	},
 	buildingCode: {
 		type: DataTypes.STRING,
@@ -13,21 +13,22 @@ const ServiceRequest = db.define('ServiceRequest', {
 	},
 	description: {
 		type: DataTypes.STRING,
-    allowNull:false
+    	allowNull:false
 	},
 	currentStatus:{
 		type: DataTypes.ENUM(['NotApplicable', 'Created', 'InProgress', 'Complete', 'Canceled']),
+		defaultValue: 'Created',
 	},
 	createdBy: {
 		type: DataTypes.STRING,
 		allowNull:false
 	},
-  lastModifiedBy: {
+    lastModifiedBy: {
 		type: DataTypes.STRING,
 		allowNull:false
 	},
-  createdAt:"createdDate",
-  updatedAt:"lastModifiedDate"
+    createdAt:"createdDate",
+    updatedAt:"lastModifiedDate"
 });
 
 module.exports = ServiceRequest
