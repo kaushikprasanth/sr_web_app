@@ -4,6 +4,7 @@
   "description": "Web Application to CRUD Service Requests",
   "main": "index.js",
   "dependencies": {
+    "axios": "^0.21.1",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "sequelize": "^6.6.2",

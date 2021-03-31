@@ -1,0 +1,40 @@
+<form action="/api/servicerequest" method="POST" class="row g-3">
+    <div class="col-md-4">
+        <label for="building" class="form-label">Building</label>
+        <select id="building" class="form-select">
+          <option selected>Choose...</option>
+          <option>...</option>
+        </select>
+      </div>
+    <div class="col-12">
+      <label for="description" required class="form-label">Description</label>
+      <textarea   class="form-control" id="description" rows="3"></textarea>
+    </div>
+    <div class="col-md-6">
+      <label for="createdBy" class="form-label">Created By</label>
+      <input type="text" class="form-control" id="inputAddress" >
+    </div>
+    <div class="col-md-4">
+      <label for="createdOn" class="form-label">Created On</label>
+      <input type="text" class="form-control"  >
+    </div>
+    <div class="col-md-6">
+      <label for="lastModifiedBy" class="form-label">Last Modified By</label>
+      <input type="text" class="form-control"  >
+    </div>
+    <div class="col-md-4">
+      <label for="lastModifiedOn" class="form-label">Last Modified On</label>
+      <input type="text" class="form-control"  >
+    </div>
+    <div class="col-md-4">
+      <label for="currentStatus" class="form-label">Status</label>
+      <select id="currentStatus" class="form-select">
+        <option selected>Choose...</option>
+        <option>...</option>
+      </select>
+    </div>
+  
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Create</button>
+    </div>
+  </form>

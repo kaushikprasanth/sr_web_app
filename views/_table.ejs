@@ -12,14 +12,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td><a href="#">Mark</a></td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
+      <% for(var i=0; i < sr.length; i++) { %>
+        <tr>
+          <th scope="row"><%= (i+1) %></th>
+          <td><a href="<%= '/view/'+sr[i].id %>"><%= sr[i].id.substring(0,7)+'..' %></a></td>
+          <td><%= sr[i].description %></td>
 
-      </tr>
+        </tr>
+     <% } %>
      
     </tbody>
   </table>

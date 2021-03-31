@@ -15,7 +15,7 @@ db.authenticate()
 // alter true modifies the table based on model changes
 db.sync({ alter: true })
 
-app.get('/',require('./controller/mainController'))
+app.use('/',require('./controller/mainController'))
 
 app.use('/api/servicerequest',require('./controller/srController'))
 
