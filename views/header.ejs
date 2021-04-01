@@ -13,6 +13,15 @@
             <a class="nav-link" href="/new">Create New</a>
           </li>
         </ul>
+        <% if(!login){%>
+        <form class="d-flex" action="/api/user/logout" method="POST">
+          <h3>
+            <i class="bi bi-person-fill"><%= name %></i>
+
+          </h3> &nbsp;&nbsp;
+          <button class="btn btn-outline-danger" type="submit">Log Out</button>
+        </form>
+        <% } %>
       </div>
     </div>
   </nav>
