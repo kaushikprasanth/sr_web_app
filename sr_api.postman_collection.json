@@ -1,0 +1,188 @@
+{
+	"info": {
+		"_postman_id": "85359e94-e388-4cf1-88a2-22f0d0bea593",
+		"name": "SR Web App API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all SR",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "name=Kaushik",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/servicerequest",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"servicerequest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create SR",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "name=Kaushik",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"buildingCode\": \"COH\",\r\n \"description\" : \"Please turn up the AC in suite 1200D. It is too hot here.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/servicerequest",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"servicerequest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update SR",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"currentStatus\": \"InProgress\",\r\n    \"buildingCode\": \"BUD\",\r\n    \"description\": \"Please turn up the AC in suite 1200D. It is too hot here.\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/servicerequest/:id",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"servicerequest",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete SR",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "name=Kaushik",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/servicerequest/:id",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"servicerequest",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET SR by id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "name=\"Kaushik\"",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/api/servicerequest/:id",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"servicerequest",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:5000"
+		}
+	]
+}
