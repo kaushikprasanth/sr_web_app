@@ -28,7 +28,7 @@
           <td>
             <a href="<%= '/edit/'+sr[i].id %>"><i class="bi bi-pencil-square"></i></a>
              &nbsp;
-            <a href="#"> <i data-bs-toggle="modal" data-bs-target="#deleteModal" class="bi bi-trash"></i></a>
+            <a href="#" onclick='onDeleteClick("<%=sr[i].id %>")'> <i  class="bi bi-trash"></i></a>
           </td>
 
         </tr>

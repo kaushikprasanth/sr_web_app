@@ -13,12 +13,29 @@
 	window.onload = function(e){
     var modal = document.getElementById('exampleModal')
     if(modal){
-	var myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
+	var myModal = new bootstrap.Modal(modal, {
         backdrop: 'static',keyboard: false
             })
         myModal.show()
     }
 	}
+	function onDeleteClick(e){
+		var deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'), {
+			keyboard: false
+		})
+        deleteModal.show()
+		document.getElementById("deleteBtn").addEventListener("click", function() {
+		fetch('./api/servicerequest/' + e, {
+				method: 'DELETE',
+			})
+		.then(res => res.text()) 
+		.then(res => {
+			deleteModal.hide()
+			window.location.replace("/");
+		})
+		});
+    }
+
 </script>
 <body>
 	<%- include('header'); -%>
