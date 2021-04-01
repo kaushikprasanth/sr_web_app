@@ -8,16 +8,19 @@ router.get('/',(req,res)=>{
 	axios.get(url+'/api/servicerequest',{headers:req.headers})
 	.then(response => {
 	  sr = response.data;
-	  res.render('index',{login:false,sr})
+	  res.render('index',{login:false,sr,name:req.cookies.name})
 	})
 	.catch(error => {
 	//   console.log(error);
-		res.render('index',{login:true,sr})
+		res.render('index',{login:true,sr,name:req.cookies.name})
 	});
 })
 
 router.get('/new',(req,res)=>{
-	res.render('new',{mode:'New',sr:{}})
+	if (req.cookies.name != undefined)
+		res.render('new',{mode:'New',login:false,sr:{},name:req.cookies.name})
+	else
+		res.redirect('/')
 })
 router.post('/new',(req,res)=>{
 	let data = JSON.stringify(req.body);
@@ -45,7 +48,7 @@ router.get('/view/:id',(req,res)=>{
 	axios.get(url+'/api/servicerequest/'+id,{headers:req.headers})
 	.then(response => {
 	  sr = response.data;
-	  res.render('new',{mode:'View',sr})
+	  res.render('new',{mode:'View',sr,login:false,name:req.cookies.name})
 	})
 	.catch(error => {
 	  console.log(error);
@@ -59,7 +62,7 @@ router.get('/edit/:id',(req,res)=>{
 	axios.get(url+'/api/servicerequest/'+id,{headers:req.headers})
 	.then(response => {
 	  sr = response.data;
-	  res.render('new',{mode:'Edit',sr})
+	  res.render('new',{mode:'Edit',sr,login:false,name:req.cookies.name})
 	})
 	.catch(error => {
 	//   console.log(error);
@@ -85,7 +88,7 @@ router.post('/edit/:id',(req,res)=>{
 	})
 	.catch(error => {
 	  console.log(error);
-	  res.render('index',{login:false})
+	  res.render('/')
 	});
 })
 module.exports = router
