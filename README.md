@@ -14,14 +14,15 @@ There will be delay of few seconds for the first request as this deployed on Her
 
 ## Code Structure
     .
-    |-- config       # contains all the configuration for the server (DB)
+    |-- config                      # contains all the configuration for the server (DB)
     |-- controller
-    |-- helper       # mail functions
-    |-- models       # database models - Service Requests
-    |-- test         # unit tests
-    |-- views        # ejs templates
-    |-- index.js     # start 
-    |-- package.json # scripts, dependencies
+    |-- helper                      # mail functions
+    |-- models                      # database models - Service Requests
+    |-- test                        # unit tests
+    |-- views                       # ejs templates
+    |-- index.js                    # start 
+    |-- package.json                # scripts, dependencies
+    |-- *.postman_collection.json   # postman collection to test the apis
 
 ## Testing
     npm run test
