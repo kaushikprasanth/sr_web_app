@@ -6,7 +6,7 @@
         <th scope="col">Building</th>
         <th scope="col">Description</th>
         <th scope="col">Status</th>
-        <th scope="col">Edit</th>
+        <th scope="col">Edit/Delete</th>
         
         
       </tr>
@@ -25,7 +25,11 @@
           <td><%= sr[i].description %></td>
           <td><%= sr[i].currentStatus %></td>
 
-          <td><a href="<%= '/edit/'+sr[i].id %>"><i class="bi bi-pencil-square"></i></a></td>
+          <td>
+            <a href="<%= '/edit/'+sr[i].id %>"><i class="bi bi-pencil-square"></i></a>
+             &nbsp;
+            <a href="#" onclick='onDeleteClick("<%=sr[i].id %>")'> <i  class="bi bi-trash"></i></a>
+          </td>
 
         </tr>
      <% } %>
