@@ -17,7 +17,26 @@ router.get('/',(req,res)=>{
 })
 
 router.get('/new',(req,res)=>{
-	res.render('new',{mode:'New'})
+	res.render('new',{mode:'New',sr:{}})
+})
+router.post('/new',(req,res)=>{
+	let data = JSON.stringify(req.body);
+	let config = {
+		method: 'post',
+		url: url+'/api/servicerequest',
+		headers: { 
+		'Cookie': 'name='+req.cookies.name,
+		'Content-Type': 'application/json'
+		},
+		data : data
+	  };
+	  
+	axios(config).then(response => {
+	  res.redirect('/view/'+response.id)
+	})
+	.catch(error => {
+	  console.log(error);
+	});
 })
 
 router.get('/view/:id',(req,res)=>{
@@ -29,7 +48,7 @@ router.get('/view/:id',(req,res)=>{
 	  res.render('new',{mode:'View',sr})
 	})
 	.catch(error => {
-	//   console.log(error);
+	  console.log(error);
 	  res.redirect('/')
 	});
 })
@@ -45,6 +64,27 @@ router.get('/edit/:id',(req,res)=>{
 	.catch(error => {
 	//   console.log(error);
 	  res.redirect('/')
+	});
+})
+router.post('/edit/:id',(req,res)=>{
+	let id = req.params.id
+	let data = JSON.stringify(req.body);
+	let config = {
+		method: 'put',
+		url: url+'/api/servicerequest/'+id,
+		headers: { 
+		'Cookie': 'name='+req.cookies.name,
+		'Content-Type': 'application/json'
+		},
+		data : data
+	  };
+	  
+	axios(config).then(response => {
+	  res.redirect('/view/'+response.id)
+	})
+	.catch(error => {
+	  console.log(error);
+	//   res.render('index',{login:false})
 	});
 })
 module.exports = router
