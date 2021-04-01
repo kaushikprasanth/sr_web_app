@@ -5,7 +5,6 @@ const ServiceRequest = require('../models/ServiceRequest')
 
 
 router.use(function (req, res, next) {
-    
     if(req.cookies.name != undefined)
         next()
     else
@@ -51,7 +50,7 @@ router.get('/:id',(req,res)=>{
 
 router.put('/:id',(req,res)=>{
     let id = req.params.id
-    let body = { ...req.body}
+    let body = { ...req.body,'lastModifiedBy':req.cookies.name}
     ServiceRequest.update( body , { where: { id } })
         .then(result => {
             if(result[0] > 0){
