@@ -32,7 +32,7 @@ router.post('/new',(req,res)=>{
 	  };
 	  
 	axios(config).then(response => {
-	  res.redirect('/view/'+response.id)
+	  res.redirect('/view/'+response.data.id)
 	})
 	.catch(error => {
 	  console.log(error);
@@ -80,11 +80,12 @@ router.post('/edit/:id',(req,res)=>{
 	  };
 	  
 	axios(config).then(response => {
-	  res.redirect('/view/'+response.id)
+
+	  res.redirect('/view/'+id)
 	})
 	.catch(error => {
 	  console.log(error);
-	//   res.render('index',{login:false})
+	  res.render('index',{login:false})
 	});
 })
 module.exports = router
