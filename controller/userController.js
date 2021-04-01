@@ -6,4 +6,9 @@ router.post('/login',(req,res)=>{
     res.redirect('/')
 })
 
+router.post('/logout',(req,res)=>{
+	res.clearCookie('name')
+    res.redirect('/')
+})
+
 module.exports = router
