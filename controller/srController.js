@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const db = require('../config/db')
 const ServiceRequest = require('../models/ServiceRequest')
+const sendMail = require('../helper/sendMail')
 
 
 router.use(function (req, res, next) {
@@ -55,6 +56,8 @@ router.put('/:id',(req,res)=>{
         .then(result => {
             if(result[0] > 0){
                 res.sendStatus(200)
+                if(body.currentStatus === "Complete")
+                    sendMail(id,req.cookies.name)
             }
             else{
                 res.sendStatus(404)
@@ -62,7 +65,6 @@ router.put('/:id',(req,res)=>{
             
         })
         .catch(err=> {
-            
             console.log(err)
             res.sendStatus(400)
         })
