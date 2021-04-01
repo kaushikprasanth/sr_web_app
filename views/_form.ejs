@@ -1,4 +1,12 @@
-<form action="/api/servicerequest" method="POST" class="row g-3">
+<%if (mode === 'New') { %>
+<form action="/new" method="POST" class="row g-3">
+<%}%>
+<%if (mode === 'Edit') { %>
+<form action="<%= '/edit/'+sr.id %>" method="POST" class="row g-3">
+<%}%>
+<%if (mode === 'View') { %>
+  <form  class="row g-3">
+<%}%>
   <div class="col-12">
     <label for="createdBy" class="form-label">
       <%if (mode === 'New') { %>
@@ -11,13 +19,13 @@
   </div>
     <div class="col-md-4">
         <label for="building" class="form-label">Building</label>
-        <select id="building" name="buildingCode"class="form-select">
+        <select id="building" name="buildingCode" class="form-select">
           <option key="BOH">BOH</option>
         </select>
       </div>
     <div class="col-12">
       <label for="description" class="form-label">Description</label>
-      <textarea class="form-control" name="description" required id="description" rows="3"></textarea>
+      <textarea class="form-control" name="description" required id="description" rows="3"><%=sr.description %></textarea>
     </div>
     <%if (mode === 'View') { %>
     <div class="col-md-6">
@@ -34,21 +42,30 @@
     </div>
     <div class="col-md-4">
       <label for="lastModifiedOn" class="form-label">Last Modified On</label>
-      <input type="text" class="form-control"  >
+      <input type="text" class="form-control" readOnly value="<%= new Date(sr.updatedAt).toLocaleString('en-US') %>" >
     </div>
     <%}%>
-    <%if (mode === 'View' || mode === "Edit") { %>
+    <%if (mode === 'View') { %>
     <div class="col-md-4">
       <label for="currentStatus" class="form-label">Status</label>
-      <select id="currentStatus" class="form-select" <%= mode == 'View' ? 'readOnly' : ''%>>
-        <% 
-        let options =['NotApplicable', 'Created', 'InProgress', 'Complete', 'Canceled']
-        for(var i=0; i < options.length; i++) {
-        %>
-        <option  key="<%= options[i] %>" <%= options[i] == sr.currentStatus ? 'selected' : ''%> > <%= options[i] %></option>
+      <input type="text" id="currentStatus" class="form-control" readOnly value="<%=sr.currentStatus %>" >
+        
+    </div> 
     <%}%>
-      </select>
-    </div>
+    <%if ( mode === "Edit") { %>
+      <div class="col-md-4">
+        <label for="currentStatus" class="form-label">Status</label>
+        <select id="currentStatus" class="form-select" name="currentStatus" >
+          <% 
+          let options =['NotApplicable', 'Created', 'InProgress', 'Complete', 'Canceled']
+          for(var i=0; i < options.length; i++) {
+          %>
+          <option  key="<%= options[i] %>" <%= options[i] == sr.currentStatus ? 'selected' : ''%> > <%= options[i] %></option>
+      
+          <%}%>
+        </select>
+      </div>
+   
   <%}%>
   
     <div class="col-12">
