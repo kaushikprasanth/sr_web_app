@@ -26,9 +26,7 @@ const ServiceRequest = db.define('ServiceRequest', {
     lastModifiedBy: {
 		type: DataTypes.STRING,
 		allowNull:false
-	},
-    createdAt:"createdDate",
-    updatedAt:"lastModifiedDate"
+	}
 });
 
 module.exports = ServiceRequest
