@@ -22,7 +22,7 @@ db.sync({ alter: true })
 app.use('/',require('./controller/mainController'))
 
 app.use('/api/user',require('./controller/userController'))
-
+app.use('/api/building',require('./controller/bdgController'))
 app.use('/api/servicerequest',require('./controller/srController'))
 
 const PORT = process.env.PORT || 5000;

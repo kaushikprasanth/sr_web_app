@@ -8,10 +8,6 @@ const ServiceRequest = db.define('ServiceRequest', {
 	    defaultValue: Sequelize.UUIDV4,
 	    primaryKey: true
 	},
-	// buildingCode: {
-	// 	type: DataTypes.STRING,
-	// 	allowNull: false
-	// },
 	description: {
 		type: DataTypes.STRING,
     	allowNull:false
