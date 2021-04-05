@@ -1,0 +1,26 @@
+<div class="modal fade" id="bdgFormModal" tabindex="-1" aria-labelledby="bdgFormLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="bdgFormLabel">Add New Building</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="bdgForm" method="POST" action="/newbdg">
+            <div class="mb-3">
+              <label for="name" class="col-form-label">Name</label>
+              <input required type="text" class="form-control" id="name" name="name">
+            </div>
+            <div class="mb-3">
+              <label for="buildingCode" class="col-form-label">Code:</label>
+              <input required class="form-control" id="buildingCode" name="buildingCode"></input>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button form="bdgForm" type="submit" class="btn btn-primary">Create</button>
+        </div>
+      </div>
+    </div>
+  </div>
