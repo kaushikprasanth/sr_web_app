@@ -1,5 +1,6 @@
 const { Sequelize,DataTypes } = require('sequelize');
 const db = require('../config/db');
+const Building = require('../models/Building')
 
 const ServiceRequest = db.define('ServiceRequest', {
 	id:{
@@ -7,10 +8,10 @@ const ServiceRequest = db.define('ServiceRequest', {
 	    defaultValue: Sequelize.UUIDV4,
 	    primaryKey: true
 	},
-	buildingCode: {
-		type: DataTypes.STRING,
-		allowNull: false
-	},
+	// buildingCode: {
+	// 	type: DataTypes.STRING,
+	// 	allowNull: false
+	// },
 	description: {
 		type: DataTypes.STRING,
     	allowNull:false
@@ -30,5 +31,7 @@ const ServiceRequest = db.define('ServiceRequest', {
     createdAt:"createdDate",
     updatedAt:"lastModifiedDate"
 });
+
+ServiceRequest.belongsTo(Building)
 
 module.exports = ServiceRequest
