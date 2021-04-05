@@ -19,13 +19,27 @@
   </div>
     <div class="col-md-4">
         <label for="building" class="form-label">Building</label>
-        <select id="building" name="buildingCode" class="form-select">
-          <option key="BOH">BOH</option>
-        </select>
+        <select <%= mode == 'View' ? 'disabled' : ''%> required id="building" name="buildingCode" class="form-select">
+          <option  key=""></option>
+          <% 
+          for(var i=0; i < bdg.length; i++) {
+          %>
+          <option  value="<%= bdg[i].buildingCode %>" <%= bdg[i].buildingCode == sr.buildingCode ? 'selected' : ''%> > <%= bdg[i].name %></option>
+      
+          <%}%>
+        </select> 
       </div>
+      <%if (mode === 'Edit' || mode === 'New') { %>
+      <div class="col-md-4">
+        <div class="col-md-4">
+          <label></label>
+          <div><i style="font-size:24px" class="bi bi-plus-circle" data-bs-toggle="modal" data-bs-target="#bdgFormModal"></i></div>
+      </div>
+      </div>
+      <% } %>
     <div class="col-12">
       <label for="description" class="form-label">Description</label>
-      <textarea class="form-control" name="description" required id="description" rows="3"><%=sr.description %></textarea>
+      <textarea <%= mode == 'View' ? 'readOnly' : ''%> class="form-control" name="description" required id="description" rows="3"><%=sr.description %></textarea>
     </div>
     <%if (mode === 'View') { %>
     <div class="col-md-6">
@@ -71,7 +85,11 @@
     <div class="col-12">
       <a class="btn btn-secondary" href="/" role="Cancel">Cancel</a>
   <%if (mode === 'Edit' || mode === "New") { %>
-      <button type="submit" class="btn btn-primary"><%= (mode === 'Edit'?'Edit':'Create') %></button>
-    </div>
+      <button type="submit" class="btn btn-primary"><%= (mode === 'Edit'?'Save':'Create') %></button>
     <%}%>
+    <%if (mode === 'View') { %>
+      <a class="btn btn-primary" href=<%='/edit/'+sr.id %> role="Cancel">Edit</a>
+      <%}%>
+    </div>
   </form>
+  <%- include('_bdgForm'); -%>
