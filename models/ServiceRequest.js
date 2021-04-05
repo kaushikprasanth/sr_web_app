@@ -28,6 +28,8 @@ const ServiceRequest = db.define('ServiceRequest', {
     updatedAt:"lastModifiedDate"
 });
 
-ServiceRequest.belongsTo(Building)
+ServiceRequest.belongsTo(Building,{
+	foreignKey:'buildingCode'
+})
 
 module.exports = ServiceRequest
